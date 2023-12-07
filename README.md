@@ -1,4 +1,5 @@
 # Chrome-Fingerprints v1.0
+![Tests & Linting](https://github.com/Vinyzu/chrome-fingerprints/actions/workflows/tests.yml/badge.svg)
 
 #### Chrome-Fingeprints is a dataset of 10k collected Windows Chrome Fingerprints.
 #### Usable with an easy-to-use API, available as a compressed (lzma) or full-size Json (view Releases)

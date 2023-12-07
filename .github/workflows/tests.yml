@@ -1,4 +1,4 @@
-name: Chrome-Fingerprints Tests
+name: Tests & Linting
 
 on:
   - push
