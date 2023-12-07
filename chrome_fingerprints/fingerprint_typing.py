@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any, Union, Optional
 
 
 @dataclass
@@ -73,7 +73,7 @@ class WebGL:
     max_anisotropy: str
     extensions: List[str]
     extensions2: List[str]
-    properties: Dict[str, str | int | float | bool | dict | list]  # type: ignore
+    properties: Dict[str, Union[str, int, float, bool, dict, list]]  # type: ignore
 
 
 @dataclass
@@ -135,9 +135,9 @@ class ChromeFingerprint:
     # webgpu: WebGPU
     webrtc: WebRTC
 
-    fonts: List[str | int]
+    fonts: List[Union[str, int]]
     codecs: List[str]
     headers: List[str]
     keyboard: Dict[str, str]
-    css: Dict[str, str | int]
-    audio: Dict[str, Optional[str | int | float]]
+    css: Dict[str, Union[str, int]]
+    audio: Dict[str, Optional[Union[str, int, float]]]
