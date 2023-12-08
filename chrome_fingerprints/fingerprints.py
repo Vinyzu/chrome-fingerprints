@@ -17,7 +17,7 @@ class FingerprintGenerator:
         self.fingerprints: Optional[List[Dict[str, Any]]] = None
 
         # Preloading: Fingerprint Decompression & Json Loading takes ~2 seconds
-        threading.Thread(target=self.initialize_fingerprints).start()
+        self.initialize_fingerprints()
 
     def initialize_fingerprints(self) -> None:
         dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -27,12 +27,7 @@ class FingerprintGenerator:
 
         self.fingerprints = orjson.loads(json_data)
 
-    def check_fingerprints_loaded(self) -> None:
-        while not self.fingerprints:
-            time.sleep(0.02)
-
     def get_fingerprint(self, fingerprint_index: Optional[int] = None) -> ChromeFingerprint:
-        self.check_fingerprints_loaded()
         assert self.fingerprints
 
         if fingerprint_index:
