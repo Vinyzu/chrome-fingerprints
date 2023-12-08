@@ -97,3 +97,14 @@ class FingerprintGenerator:
             {"brand": brand["brand"], "version": brand["version"].split(".")[0]}
             for brand in fingerprint["navigator"]["full_version_list"]
         ]
+
+class AsyncFingerprintGenerator(FingerprintGenerator):
+   def __init__(self):
+      self.fingerprints: Optional[List[Dict[str, Any]]] = None
+       
+   def __await__(self):
+       return self._ainit.__await__()
+
+   async def _ainit(self):
+       loop = asyncio.get_running_loop()
+       await loop.run_in_executor(None, self.initialize_fingerprints)
