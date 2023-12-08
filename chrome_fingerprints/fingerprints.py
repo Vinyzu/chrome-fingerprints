@@ -103,7 +103,7 @@ class AsyncFingerprintGenerator(FingerprintGenerator):
       self.fingerprints: Optional[List[Dict[str, Any]]] = None
        
    def __await__(self):
-       return self._ainit.__await__()
+       return self._ainit().__await__()
 
    async def _ainit(self):
        loop = asyncio.get_running_loop()
