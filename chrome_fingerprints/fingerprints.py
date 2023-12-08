@@ -4,6 +4,7 @@ import lzma
 import threading
 import time
 import random
+import asyncio
 
 import orjson
 import dacite as dataclass_manager
