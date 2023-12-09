@@ -62,8 +62,13 @@ class FingerprintGenerator:
         self.fingerprints: Optional[List[Dict[str, Any]]] = None
 
         # Preloading: Fingerprint Decompression & Json Loading takes ~2 seconds
-        with ThreadPoolExecutor(max_workers=1) as executor:
-            self.fingerprint_loading_feature = executor.submit(self.initialize_fingerprints)
+        self.executor = ThreadPoolExecutor(max_workers=1)
+
+        try:
+            self.fingerprint_loading_feature = self.executor.submit(self.initialize_fingerprints)
+        except Exception as e:
+            self.executor.shutdown(wait=True, cancel_futures=True)
+            raise e
 
     def initialize_fingerprints(self) -> None:
         dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -74,10 +79,14 @@ class FingerprintGenerator:
         self.fingerprints = orjson.loads(json_data)
 
     def get_fingerprint(self, fingerprint_index: Optional[int] = None) -> ChromeFingerprint:
-        if not self.fingerprint_loading_feature.done():
-            self.fingerprint_loading_feature.result(timeout=10)
+        try:
+            if not self.fingerprint_loading_feature.done():
+                self.fingerprint_loading_feature.result(timeout=10)
 
-        assert self.fingerprints
+            assert self.fingerprints
+        except Exception as e:
+            self.executor.shutdown(wait=True, cancel_futures=True)
+            raise e
 
         if fingerprint_index:
             fingerprint = self.fingerprints[fingerprint_index]
@@ -109,7 +118,7 @@ class AsyncFingerprintGenerator:
 
     async def get_fingerprint(self, fingerprint_index: Optional[int] = None) -> ChromeFingerprint:
         if not self.fingerprint_loading_feature.done():
-            await asyncio.wait([self.fingerprint_loading_feature])
+            await self.fingerprint_loading_feature
 
         assert self.fingerprints
 
