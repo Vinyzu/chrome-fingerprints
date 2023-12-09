@@ -1,6 +1,6 @@
-from .fingerprints import FingerprintGenerator
+from .fingerprints import FingerprintGenerator, AsyncFingerprintGenerator
 from .fingerprint_typing import ChromeFingerprint
 
-VERSION = 1.0
+VERSION = 1.1
 
-__all__ = ['FingerprintGenerator', 'ChromeFingerprint', 'VERSION']
+__all__ = ['FingerprintGenerator', 'AsyncFingerprintGenerator', 'ChromeFingerprint', 'VERSION']

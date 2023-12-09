@@ -1,9 +1,9 @@
-# Chrome-Fingerprints v1.0
+# Chrome-Fingerprints v1.1
 ![Tests & Linting](https://github.com/Vinyzu/chrome-fingerprints/actions/workflows/tests.yml/badge.svg)
 
 #### Chrome-Fingeprints is a dataset of 10k collected Windows Chrome Fingerprints.
 #### Usable with an easy-to-use API, available as a compressed (lzma) or full-size Json (view Releases)
-#### It uses just two external packages: `OrJson` for faster Json serialization and `DaCite` for dataclass management.
+#### It uses just three external packages: `OrJson` for faster Json serialization, `DaCite` for dataclass management and `AIOMisc` for async lzma-file reading 
 
 
 ## Install it from PyPI
@@ -23,6 +23,21 @@ fp_gen = FingerprintGenerator()
 
 fingerprint: ChromeFingerprint = fp_gen.get_fingerprint()
 ```
+
+## Async Usage
+
+```py
+import asyncio
+
+from chrome_fingerprints.fingerprints import AsyncFingerprintGenerator, ChromeFingerprint
+
+async def main():
+    fp_gen = AsyncFingerprintGenerator()
+    fingerprint: ChromeFingerprint = await fp_gen.get_fingerprint()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
 ---
 
 ## Copyright and License
@@ -40,7 +55,7 @@ fingerprint: ChromeFingerprint = fp_gen.get_fingerprint()
 
 ---
 
-![Version](https://img.shields.io/badge/Chrome_Fingerprints-v1.0-blue)
+![Version](https://img.shields.io/badge/Chrome_Fingerprints-v1.1-blue)
 ![License](https://img.shields.io/badge/License-GNU%20GPL-green)
 ![Python](https://img.shields.io/badge/Python-v3.x-lightgrey)
 

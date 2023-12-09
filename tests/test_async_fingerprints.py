@@ -1,0 +1,22 @@
+import pytest
+
+from chrome_fingerprints import AsyncFingerprintGenerator, ChromeFingerprint
+
+
+@pytest.mark.asyncio
+async def test_fingerprint_random(async_fingerprint_generator: AsyncFingerprintGenerator):
+    chrome_fp = await async_fingerprint_generator.get_fingerprint()
+    assert isinstance(chrome_fp, ChromeFingerprint)
+
+
+@pytest.mark.asyncio
+async def test_fingerprint_index(async_fingerprint_generator: AsyncFingerprintGenerator):
+    chrome_fp = await async_fingerprint_generator.get_fingerprint(fingerprint_index=0)
+    assert isinstance(chrome_fp, ChromeFingerprint)
+
+
+@pytest.mark.asyncio
+async def test_all_fingerprints(async_fingerprint_generator: AsyncFingerprintGenerator):
+    for index in range(10000):
+        chrome_fp = await async_fingerprint_generator.get_fingerprint(fingerprint_index=index)
+        assert isinstance(chrome_fp, ChromeFingerprint)
