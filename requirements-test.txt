@@ -2,6 +2,6 @@
 flake8==7.0.0
 tox==4.12.1
 pytest==7.4.4
-pytest_asyncio==0.23.4
+pytest_asyncio==0.23.5
 mypy==1.8.0
 types-setuptools==69.0.0.20240125
