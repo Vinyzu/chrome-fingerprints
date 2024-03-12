@@ -3,5 +3,5 @@ flake8==7.0.0
 tox==4.14.1
 pytest==8.1.0
 pytest_asyncio==0.23.5.post1
-mypy==1.8.0
+mypy==1.9.0
 types-setuptools==69.1.0.20240310
