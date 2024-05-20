@@ -4,4 +4,4 @@ tox==4.15.0
 pytest==8.2.0
 pytest_asyncio==0.23.6
 mypy==1.10.0
-types-setuptools==69.5.0.20240423
+types-setuptools==69.5.0.20240519
