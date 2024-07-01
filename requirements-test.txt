@@ -1,6 +1,6 @@
 # This requirements are for development and testing only, not for production.
 flake8==7.1.0
-tox==4.15.0
+tox==4.15.1
 pytest==8.2.2
 pytest_asyncio==0.23.7
 mypy==1.10.1
