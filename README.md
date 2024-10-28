@@ -18,7 +18,7 @@ For developers, Capsolver offers API integration options detailed in their [docu
 
 [![Evomi Banner](https://my.evomi.com/images/brand/cta.png)](https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=Vinyzu-ChromeFingerprints)
 
-**Evomi** is your Swiss Quality, affordable Proxy Provider. I can personally recommend them for their High Quality Residential Proxies.
+[**Evomi**](https://evomi.com?utm_source=github&utm_medium=banner&utm_campaign=Vinyzu-ChromeFingerprints) is your Swiss Quality, affordable Proxy Provider. I can personally recommend them for their High Quality Residential Proxies.
 
 - 🌍 **Global Presence**: Available in 150+ Countries
 - ⚡ **Guaranteed Low Latency**
